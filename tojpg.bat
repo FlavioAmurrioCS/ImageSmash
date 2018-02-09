@@ -1,0 +1,1 @@
+magick .\image_folder\modify.ppm .\image_folder\modify.jpg

@@ -1,0 +1,1 @@
+magick .\image_folder\original.jpg -compress none .\image_folder\original.ppm
