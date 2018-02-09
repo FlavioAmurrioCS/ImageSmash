@@ -1,0 +1,2 @@
+# ImageSmash
+Context Aware Resizing
