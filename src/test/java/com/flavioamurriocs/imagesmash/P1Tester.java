@@ -43,7 +43,7 @@ public class P1Tester {
   
   public void writeFile(String content, String filename){
     try {
-      PrintWriter pw = new PrintWriter(filename);
+      PrintWriter pw = new PrintWriter(new File(filename));
       pw.write(content);
       pw.close();
     }
