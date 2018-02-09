@@ -25,7 +25,7 @@ public class P1 {
         for (int i = 0; i < ret.height(); i++)
             for (int j = 0; j < ret.width(); j++)
                 ret.set(i, j, energyAt(grid, i, j));
-        System.out.println(ret);
+        // System.out.println(ret);
         return ret;
     }
 

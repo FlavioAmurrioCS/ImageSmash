@@ -13,8 +13,15 @@ public class App {
     public static final String MODIFY = FOLDER + "modify.ppm";
     public static void main(String[] args) {
         Grid<RGB> grid = P1.ppm2grid(ORIGINAL);
+
+
+        for(int i = 0; i < 500; i++){
+            List<Point> path = P1.findVerticalPath(grid);
+            P1.removeVerticalPath(grid, path);
+            System.out.println("Iteration: " + i);
+        }
         // Grid<RGB> grid = new Grid<>(1, 1);
-        grid.set(0, 0, new RGB(255, 255, 255));
+        // grid.set(0, 0, new RGB(255, 255, 255));
         P1.grid2ppm(grid, MODIFY);
 
         System.out.println("Hellow Worlds!!");
