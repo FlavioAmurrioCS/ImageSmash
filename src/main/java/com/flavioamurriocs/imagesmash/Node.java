@@ -1,7 +1,7 @@
 package com.flavioamurriocs.imagesmash;
 
 /**
- * Node
+ * Node. Class that helps store paths to remove points. Methods are self explanatory.
  */
 public class Node {
 
@@ -23,5 +23,9 @@ public class Node {
             return node.p.equals(this.p) || node.bestHop.equals(this.bestHop) || node.cost == this.cost;
         }
         return false;
+    }
+
+    public String toString() {
+        return "" + cost;
     }
 }

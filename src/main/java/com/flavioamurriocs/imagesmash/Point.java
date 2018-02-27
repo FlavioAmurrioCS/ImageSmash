@@ -1,7 +1,7 @@
 package com.flavioamurriocs.imagesmash;
 
 /**
- * Point
+ * Point. Class that helps us store a pair. Methods are self explanatory.
  */
 public class Point {
 

@@ -1,7 +1,7 @@
 package com.flavioamurriocs.imagesmash;
 
 /**
- * RGB
+ * RGB. Conatiner of the red grenn blue vaues for each pixel. Most methods are self explanatory
  */
 public class RGB {
 
@@ -12,6 +12,10 @@ public class RGB {
         this.r = r;
         this.g = g;
         this.b = b;
+    }
+
+    public RGB() {
+        this(1, 1, 1);
     }
 
     public boolean equals(Object other) {
@@ -28,10 +32,12 @@ public class RGB {
         return String.format("(%s,%s,%s)", r, g, b);
     }
 
+    // use to output the rgb when writing to file
     public String toFileString() {
         return String.format("%s %s %s", r, g, b);
     }
 
+    // Helper method that calculates the energy with respect to another rgb.
     public int energy(RGB rgb) {
         int rs = (this.r - rgb.r) * (this.r - rgb.r);
         int gs = (this.g - rgb.g) * (this.g - rgb.g);

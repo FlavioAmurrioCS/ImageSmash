@@ -3,7 +3,7 @@ package com.flavioamurriocs.imagesmash;
 import java.util.ArrayList;
 
 /**
- * Grid
+ * Grid. Class used to easily to manipulate 2d arrayList
  */
 public class Grid<T> {
 
@@ -44,10 +44,12 @@ public class Grid<T> {
         return values.get(i).get(j);
     }
 
+    // Get method, using the a point object
     public T get(Point p) {
         return this.get(p.x, p.y);
     }
 
+    // Special method that will wrap around if going out of bounds
     public T getWrap(int i, int j) {
         i = i < 0 ? i + this.height() : i;
         j = j < 0 ? j + this.width() : j;
@@ -67,11 +69,12 @@ public class Grid<T> {
         return ret;
     }
 
+    // Remove method using point object
     public T remove(Point p) {
         return this.remove(p.x, p.y);
     }
 
-    // Creates and returns a transposed version of the Grid (the original leftmost column is the new first row; second-leftmost original column is the new second row; etc). Doesn't modify the original.
+    // Create a transpose copy of current grid and return it. Dont modify the original.
     public Grid<T> transpose() {
         Grid<T> ret = new Grid<>(this.width(), this.height());
         for (int i = 0; i < this.height(); i++)
@@ -89,21 +92,38 @@ public class Grid<T> {
         // return sb.toString();
     }
 
-    // When other is also a Grid, and both grids are the same size, and every single location holds items that are .equals()-equivalent to each other, this method returns true. (false, otherwise).
+    // Used to view the grid in the debugger
+    public String toDebugString() {
+        // return this.values.toString();
+        StringBuilder sb = new StringBuilder();
+        for (ArrayList<?> list : this.values)
+            sb.append(list + "\n");
+        return sb.toString();
+    }
+
+    // Check for equallity in all aspects
     @SuppressWarnings("unchecked")
     public boolean equals(Object other) {
-        if (this == other)
-            return true;
-        if (other instanceof Grid<?>) {
+        try {
+            if (this == other)
+                return true;
             Grid<T> grid = (Grid<T>) other;
-            if (this.height() != grid.height() || this.width() != grid.width())
-                return false;
-            for (int i = 0; i < this.height(); i++)
-                for (int j = 0; j < this.width(); j++)
-                    if (!this.get(i, j).equals(grid.get(i, j)))
-                        return false;
-            return true;
+            if ((this.height() == grid.height() && this.width() == grid.width())) {
+                for (int i = 0; i < this.height(); i++)
+                    for (int j = 0; j < this.width(); j++) {
+                        T a = this.get(i, j);
+                        T b = grid.get(i, j);
+                        if (!a.equals(b))
+                            return false;
+                    }
+                return true;
+            }
+            return false;
+
+        } catch (Exception e) {
+            //TODO: handle exception
         }
-        return false;
+        return true;
+
     }
 }
