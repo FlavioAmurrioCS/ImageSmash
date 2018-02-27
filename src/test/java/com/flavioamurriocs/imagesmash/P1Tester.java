@@ -1,4 +1,3 @@
-package com.flavioamurriocs.imagesmash;
 /** Example of using unit tests for this assignment.  This is
   * partially how your code will be graded.  Later in the class we will
   * write our own unit tests.  To run them on the command line, make
@@ -17,6 +16,7 @@ package com.flavioamurriocs.imagesmash;
   *  demo$ javac -cp .;junit-4.12.jar *.java  # compile everything
   *  demo$ java -cp .;junit-4.12.jar P1Tests  # run tests
   */
+package com.flavioamurriocs.imagesmash;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -43,7 +43,7 @@ public class P1Tester {
   
   public void writeFile(String content, String filename){
     try {
-      PrintWriter pw = new PrintWriter(new File(filename));
+      PrintWriter pw = new PrintWriter(filename);
       pw.write(content);
       pw.close();
     }
